@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual env
+.venv/
+env/
+venv/
+
+# VSCode
+.vscode/
+
+# Envs
+.env
+
+# Alembic
+alembic/versions/*.py
+
+# Database (caso esteja usando SQLite em algum momento)
+*.sqlite3
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Others
+*.db
+.DS_Store
