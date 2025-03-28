@@ -70,12 +70,9 @@ A autenticação é baseada em JWT. Para acessar endpoints protegidos:
 
 Authentication is based on JWT. To access protected endpoints:
 
-1. Faça `POST /auth/register` com `email` e `password`
-    Make a `POST /auth/register` request with `email` and `password`
-2. Faça `POST /auth/login` para obter o `access_token`
-    Make a POST /auth/login request to get the access_token
-3. Clique em "Authorize" no Swagger e insira: `Bearer <access_token>`
-    Click "Authorize" in Swagger and enter: Bearer <access_token>
+1. Faça `POST /auth/register` com `email` e `password` | Make a `POST /auth/register` request with `email` and `password`
+2. Faça `POST /auth/login` para obter o `access_token` | Make a POST /auth/login request to get the access_token
+3. Clique em "Authorize" no Swagger e insira: `Bearer <access_token>` | Click "Authorize" in Swagger and enter: Bearer <access_token>
 
 ---
 
