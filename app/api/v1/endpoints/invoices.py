@@ -7,6 +7,7 @@ from app import crud
 from app.core.deps import get_db
 from app.core.security import get_current_user
 from app.schemas.invoice import InvoiceCreate, InvoiceRead, InvoiceUpdate
+from app.services.invoice import generate_invoice_from_route
 
 router = APIRouter(
     dependencies=[Depends(get_current_user)]
@@ -46,7 +47,7 @@ def delete_invoice(invoice_id: int, db: Session = Depends(get_db)):
 
 @router.post('/generate/{route_id}', response_model=InvoiceRead)
 def generate_invoice(route_id: int, db: Session = Depends(get_db)):
-    invoice = crud.invoice.generate_invoice_from_route(
+    invoice = generate_invoice_from_route(
         db=db, route_id=route_id)
     if not invoice:
         raise HTTPException(status_code=404, detail='Route not found')

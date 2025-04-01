@@ -1,9 +1,16 @@
-
 # 💰 Invoices API
 
 Uma API simples para gerenciamento de clientes, rotas e invoices.
 
-A simple API to manage clients, routes and invoices.
+A simple API for managing clients, routes and invoices.
+
+---
+
+## 🧠 Motivação do projeto | Project Motivation
+
+Este projeto foi criado como prática de backend com foco em estrutura limpa, autenticação JWT e separação de responsabilidades entre camadas de API, lógica e banco de dados.
+
+This project was built as backend practice focused on clean structure, JWT authentication, and separation of concerns between API, logic, and database layers.
 
 ---
 
@@ -28,7 +35,7 @@ A simple API to manage clients, routes and invoices.
 
 ```bash
 # 1. Apagar qualquer instância anterior (containers, volumes, redes)
-# 1. Stop and remove any previus containers, volumes, and networks
+# 1. Stop and remove any previous containers, volumes, and networks
 docker compose down -v
 
 # 2. Construir as imagens
@@ -47,7 +54,7 @@ Open another terminal and run the migrations:
 ```bash
 # 4. Executar as migrações
 # 4. Run the migrations
-docker compose exec api alembic upgrade head
+docker compose exec api alembic upgrade head # Applies database migrations
 ```
 
 ---
@@ -56,7 +63,7 @@ docker compose exec api alembic upgrade head
 
 Um script opcional (`mock_data.py`) está incluído para popular o banco com 3 clientes, 15 rotas e 5 invoices.
 
-An optional script (`mock_data.py`) is included to populate the database with 3 clients, 15 routes, and 5 invoices.
+An optional script (`mock_data.py`) is included to populate the database with sample data: 3 clients, 15 routes, and 5 invoices.
 
 ```bash
 docker compose exec api python mock_data.py

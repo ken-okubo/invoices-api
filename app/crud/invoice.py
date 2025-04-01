@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 
 from app.models.invoice import Invoice
-from app.models.route import Route
 from app.schemas.invoice import InvoiceCreate, InvoiceUpdate
 
 
@@ -37,19 +36,3 @@ def delete_invoice(db: Session, invoice_id: int):
         db.delete(invoice)
         db.commit()
     return invoice
-
-
-def generate_invoice_from_route(db: Session, route_id: int) -> Invoice:
-    route = db.query(Route).filter(Route.id == route_id).first()
-    if not route:
-        return None
-
-    new_invoice = Invoice(
-        amount=100.0,
-        date=route.date,
-        route_id=route_id
-    )
-    db.add(new_invoice)
-    db.commit()
-    db.refresh(new_invoice)
-    return new_invoice
