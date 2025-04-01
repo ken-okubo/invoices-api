@@ -5,6 +5,7 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
 
+
 class UserRead(BaseModel):
     id: int
     email: EmailStr
@@ -12,6 +13,7 @@ class UserRead(BaseModel):
 
     class Config:
         from_attributes = True  # compatível com Pydantic v2+
+
 
 class UserLogin(BaseModel):
     email: EmailStr

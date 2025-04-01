@@ -19,12 +19,14 @@ def create_route(route: RouteCreate, db: Session = Depends(get_db)):
 
 
 @router.get('/', response_model=List[RouteRead])
-def list_routes(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def list_routes(skip: int = 0, limit: int = 100,
+                db: Session = Depends(get_db)):
     return crud.route.get_routes(db, skip=skip, limit=limit)
 
 
 @router.put('/{route_id}', response_model=RouteRead)
-def update_route(route_id: int, route: RouteUpdate, db: Session = Depends(get_db)):
+def update_route(route_id: int, route: RouteUpdate,
+                 db: Session = Depends(get_db)):
     return crud.route.update_route(db, route_id, route)
 
 

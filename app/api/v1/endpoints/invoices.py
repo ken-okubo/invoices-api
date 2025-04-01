@@ -19,7 +19,8 @@ def create_invoice(invoice: InvoiceCreate, db: Session = Depends(get_db)):
 
 
 @router.get('/', response_model=List[InvoiceRead])
-def list_invoices(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def list_invoices(skip: int = 0, limit: int = 100,
+                  db: Session = Depends(get_db)):
     return crud.invoice.get_invoices(db=db, skip=skip, limit=limit)
 
 
@@ -32,8 +33,10 @@ def get_invoice(invoice_id: int, db: Session = Depends(get_db)):
 
 
 @router.put('/{invoice_id}', response_model=InvoiceRead)
-def update_invoice(invoice_id: int, invoice: InvoiceUpdate, db: Session = Depends(get_db)):
-    return crud.invoice.update_invoice(db=db, invoice_id=invoice_id, invoice_in=invoice)
+def update_invoice(invoice_id: int, invoice: InvoiceUpdate,
+                   db: Session = Depends(get_db)):
+    return crud.invoice.update_invoice(db=db, invoice_id=invoice_id,
+                                       invoice_in=invoice)
 
 
 @router.delete('/{invoice_id}')
@@ -43,7 +46,8 @@ def delete_invoice(invoice_id: int, db: Session = Depends(get_db)):
 
 @router.post('/generate/{route_id}', response_model=InvoiceRead)
 def generate_invoice(route_id: int, db: Session = Depends(get_db)):
-    invoice = crud.invoice.generate_invoice_from_route(db=db, route_id=route_id)
+    invoice = crud.invoice.generate_invoice_from_route(
+        db=db, route_id=route_id)
     if not invoice:
         raise HTTPException(status_code=404, detail='Route not found')
     return invoice

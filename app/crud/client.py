@@ -25,10 +25,10 @@ def update_client(db: Session, client_id: int, client_in: ClientUpdate):
     client = db.query(Client).filter(Client.id == client_id).first()
     if not client:
         raise HTTPException(status_code=404, detail='Client not found')
-    
+
     for field, value in client_in.dict(exclude_unset=True).items():
         setattr(client, field, value)
-    
+
     db.commit()
     db.refresh(client)
     return client
@@ -38,7 +38,7 @@ def delete_client(db: Session, client_id: int):
     client = db.query(Client).filter(Client.id == client_id).first()
     if not client:
         raise HTTPException(status_code=404, details='Client not found')
-    
+
     db.delete(client)
     db.commit()
     return client
